@@ -1,0 +1,24 @@
+.hide {
+	display: none;
+}
+
+.cart-container {
+	display: none;
+	transition: 700ms all ease-in-out;
+}
+
+.cart-container.hide {
+	display: block;
+}
+
+.show {
+	display: none;
+}
+
+.add-form {
+	display: none;
+}
+
+.add-form.show {
+	display: block;
+}

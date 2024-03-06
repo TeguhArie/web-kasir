@@ -114,104 +114,121 @@ if (isset($_POST['cek'])) {
 </head>
 
 <body>
-    <div class="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+    <div class="relative z-10 w-4/12 bottom-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
 
-        <div class="fixed inset-0 overflow-hidden">
-            <div class="absolute inset-0 overflow-hidden">
-                <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-                    <div class="pointer-events-auto w-screen max-w-md">
-                        <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                            <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
-                                <div class="flex items-start justify-between">
-                                    <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h2>
-                                    <div class="ml-3 flex h-7 items-center">
-                                        <button type="button" class="close relative -m-2 p-2 text-gray-400 hover:text-gray-500">
-                                            <span class="absolute -inset-0.5"></span>
-                                            <span class="sr-only">Close panel</span>
-                                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </div>
+
+        <!-- <div class="fixed inset-0 overflow-hidden"> -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                <div class="pointer-events-auto w-screen max-w-md">
+                    <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                        <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                            <div class="flex items-start justify-between">
+                                <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart
+                                </h2>
+                                <div class="ml-3 flex h-7 items-center">
+                                    <button type="button"
+                                        class="close relative -m-2 p-2 text-gray-400 hover:text-gray-500">
+                                        <span class="absolute -inset-0.5"></span>
+                                        <span class="sr-only">Close panel</span>
+                                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                            stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
                                 </div>
+                            </div>
 
-                                <div class="mt-8">
-                                    <div class="flow-root">
-                                        <ul role="list" class="-my-6 divide-y divide-gray-200">
-                                            <?php
-                                            $no = 1;
-                                            $ambil2 = mysqli_query($conn, "SELECT * FROM keranjang");
+                            <div class="mt-8">
+                                <div class="flow-root">
+                                    <ul role="list" class="-my-6 divide-y divide-gray-200">
+                                        <?php
+                                        $no = 1;
+                                        $ambil2 = mysqli_query($conn, "SELECT * FROM keranjang");
 
-                                            foreach ($ambil2 as $data) : @$harga_total += $data['total'];
+                                        foreach ($ambil2 as $data):
+                                            @$harga_total += $data['total'];
 
                                             ?>
-                                                <li class="flex py-6">
-                                                    <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                        <img src="../../src/uploads/<?= $data['foto'] ?>">
-                                                    </div>
+                                            <li class="flex py-6">
+                                                <div
+                                                    class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                                    <img src="../../src/uploads/<?= $data['foto'] ?>">
+                                                </div>
 
-                                                    <div class="ml-4 flex flex-1 flex-col">
-                                                        <div>
-                                                            <div class="flex justify-between text-base font-medium text-gray-900">
-                                                                <h3>
-                                                                    <?= $data['nama'] ?>
-                                                                </h3>
-                                                                <p class="ml-4">Rp. <?= number_format($data['harga'])  ?></p>
-                                                            </div>
-                                                            <!-- <p class="mt-1 text-sm text-gray-500">Salmon</p> -->
+                                                <div class="ml-4 flex flex-1 flex-col">
+                                                    <div>
+                                                        <div
+                                                            class="flex justify-between text-base font-medium text-gray-900">
+                                                            <h3>
+                                                                <?= $data['nama'] ?>
+                                                            </h3>
+                                                            <p class="ml-4">Rp.
+                                                                <?= number_format($data['harga']) ?>
+                                                            </p>
                                                         </div>
-                                                        <div class="flex flex-1 items-end justify-between text-sm">
-                                                            <p class="text-gray-500">Qty <?= $data['qty'] ?></p>
+                                                        <!-- <p class="mt-1 text-sm text-gray-500">Salmon</p> -->
+                                                    </div>
+                                                    <div class="flex flex-1 items-end justify-between text-sm">
+                                                        <p class="text-gray-500">Qty
+                                                            <?= $data['qty'] ?>
+                                                        </p>
 
-                                                            <div class="flex">
-                                                                <a href="hapus_pesanan.php?id=<?= $data['id_keranjang'] ?>" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</a>
-                                                            </div>
+                                                        <div class="flex">
+                                                            <a href="hapus_pesanan.php?id=<?= $data['id_keranjang'] ?>"
+                                                                class="font-medium text-indigo-600 hover:text-indigo-500">Remove</a>
                                                         </div>
                                                     </div>
-                                                </li>
-                                            <?php endforeach; ?>
-                                            <!-- More products... -->
-                                        </ul>
-                                    </div>
+                                                </div>
+                                            </li>
+                                        <?php endforeach; ?>
+                                        <!-- More products... -->
+                                    </ul>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
-                                <form action="" method="post">
-                                    <div class="flex justify-between text-base font-medium text-gray-900">
-                                        <p>Subtotal</p>
-                                        <p>Rp. <?= number_format(@$harga_total)  ?></p>
-                                    </div>
-                                    <p class="mt-0.5 text-sm text-gray-500">Tekan checkout untuk melanjutkan pembayaran.</p>
-                                    <div class="font-bold mb-6 flex justify-center items-start text-center text-md text-gray-500">
-                                        <div class="w-full h-full flex justify-between">
-                                            <div class="mt-2 w-1/2">
-                                                <label for="kasir">kasir:</label>
-                                                <input type="text" name="kasir" id="kasir">
-                                                <input type="hidden" name="harga_total" value="<?= @$harga_total ?>">
-                                            </div>
-                                            <div class="mt-2 w-1/2">
-                                                <select name="metode" id="">
-                                                    <option value="Tunai">Tunai</option>
-                                                    <option value="Dana">Dana</option>
-                                                    <option value="Ovo">Ovo</option>
-                                                    <option value="ShopeePay">ShopeePay</option>
-                                                </select>
-                                            </div>
+                        <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
+                            <form action="" method="post">
+                                <div class="flex justify-between text-base font-medium text-gray-900">
+                                    <p>Subtotal</p>
+                                    <p>Rp.
+                                        <?= number_format(@$harga_total) ?>
+                                    </p>
+                                </div>
+                                <p class="mt-0.5 text-sm text-gray-500">Tekan checkout untuk melanjutkan pembayaran.
+                                </p>
+                                <div
+                                    class="font-bold mb-6 flex justify-center items-start text-center text-md text-gray-500">
+                                    <div class="w-full h-full flex justify-between">
+                                        <div class="mt-2 w-1/2">
+                                            <label for="kasir">kasir:</label>
+                                            <input type="text" name="kasir" id="kasir">
+                                            <input type="hidden" name="harga_total" value="<?= @$harga_total ?>">
+                                        </div>
+                                        <div class="mt-2 w-1/2">
+                                            <select name="metode" id="">
+                                                <option value="Tunai">Tunai</option>
+                                                <option value="Dana">Dana</option>
+                                                <option value="Ovo">Ovo</option>
+                                                <option value="ShopeePay">ShopeePay</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="">
-                                        <button type="submit" name="cek" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Checkout</button>
-                                    </div>
-                                </form>
-                            </div>
-
+                                </div>
+                                <div class="">
+                                    <button type="submit" name="cek"
+                                        class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Checkout</button>
+                                </div>
+                            </form>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
+        <!-- </div> -->
     </div>
     </div>
     <script src="../../src/js/script.js">

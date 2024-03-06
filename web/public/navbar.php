@@ -36,9 +36,7 @@
             </button>
         </div>
     </div>
-    <div class="cart-container">
-        <?php include "carts.php"; ?>
-    </div>
+
     <script src="../../src/js/script.js">
     </script>
 </body>

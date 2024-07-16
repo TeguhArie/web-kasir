@@ -4,9 +4,9 @@ include '../../src/config/dbConfig.php';
 session_start();
 
 // Hapus semua data session
-session_destroy();
 
+session_destroy();
 // Redirect ke halaman login atau halaman lain yang diinginkan setelah logout
 header("Location: login.php");
 exit;
-?>
+?>  

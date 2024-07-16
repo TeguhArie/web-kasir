@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['login_admin'] = $username;
         header("location: dashboard.php");
         exit();
-    } else {
+    } else { 
         // Login gagal
         echo "Username atau password salah.";
     }

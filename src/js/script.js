@@ -12,4 +12,3 @@ console.log(continueBtn);
 continueBtn.addEventListener("click", () => {
 	container.classList.toggle("hide");
 });
-
